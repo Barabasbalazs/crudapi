@@ -1,0 +1,11 @@
+spring:
+    application:
+        name:
+            'crudapi'
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: create-only
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
