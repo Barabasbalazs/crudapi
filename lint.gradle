@@ -1,0 +1,45 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.0.25"
+  }
+}
+
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
+apply plugin: com.github.spotbugs.snom.SpotBugsPlugin
+
+def configDir = "${buildscript.sourceFile.parentFile}/config/linting"
+
+checkstyle {
+    toolVersion = '10.3' // Adjust to the latest version if necessary
+    ignoreFailures = true
+    configFile = file("${configDir}/checkstyle.xml")
+}
+
+spotbugs {
+    toolVersion = '4.7.3'
+    ignoreFailures = true
+    effort = com.github.spotbugs.snom.Effort.MAX
+    reportLevel = com.github.spotbugs.snom.Confidence.values()[0]     //low
+    excludeFilter = file("${configDir}/spotbugs-filter.xml")
+}
+
+pmd {
+    toolVersion = '6.39.0'
+    ignoreFailures = true
+    ruleSetFiles = files("${configDir}/pmd-ruleset.xml")
+    ruleSets = []
+    rulesMinimumPriority = 5
+    incrementalAnalysis = true
+
+}
+
+task lint {
+     description = 'Run all lint checks'
+     dependsOn checkstyleMain, checkstyleTest, spotbugsMain, spotbugsTest, pmdMain, pmdTest // Adjust based on your needs
+}
