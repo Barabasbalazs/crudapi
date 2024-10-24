@@ -34,8 +34,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//jpa is the ORM and jdbc is just to access DB
-	//commented out until i set the connnection properly
-	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2'
+	implementation 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -56,7 +57,7 @@ jacocoTestReport {
 	reports {
 		xml.required = false
 		csv.required = false
-		html.outputLocation = layout.buildDirectory.dir("$rootDir/tmp/test-reports")
+		html.outputLocation = layout.buildDirectory.dir("$rootDir/build/test-reports")
 	}
 	finalizedBy jacocoTestCoverageVerification
 }

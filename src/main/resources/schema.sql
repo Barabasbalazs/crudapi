@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS MOVIES (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(250) NOT NULL,
+  overview VARCHAR(250) NOT NULL,
+  popularity FLOAT NOT NULL,
+  release_date DATE NOT NULL
+);
