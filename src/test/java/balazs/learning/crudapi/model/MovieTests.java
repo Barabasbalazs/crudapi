@@ -3,6 +3,8 @@ package balazs.learning.crudapi.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +16,8 @@ class MovieTests {
         String overview = "Overview";
         Float popularity = 19.0f;
         Date releaseDate = new Date(1L);
-        Movie movie = new Movie(title, overview, popularity, releaseDate);
+        Set<Genre> genres = new HashSet<Genre>();
+        Movie movie = new Movie(title, overview, popularity, releaseDate, genres);
         assertThat(movie.getTitle()).isEqualTo(title);
     }
 }

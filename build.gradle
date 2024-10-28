@@ -1,8 +1,8 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.4'
-	id 'io.spring.dependency-management' version '1.1.6'
-	id 'jacoco'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'jacoco'
 }
 
 apply from: "$rootDir/lint.gradle"
@@ -11,53 +11,52 @@ group = 'balazs.learning'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 jacoco {
-  toolVersion = "0.8.8"
-  reportsDirectory = layout.buildDirectory.dir("$rootDir/tmp/coverage")
+    toolVersion = "0.8.8"
+    reportsDirectory = layout.buildDirectory.dir("$rootDir/tmp/coverage")
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//jpa is the ORM and jdbc is just to access DB
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'com.h2database:h2'
-	implementation 'org.postgresql:postgresql'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.postgresql:postgresql:42.7.3'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
-	finalizedBy jacocoTestReport
-	useJUnitPlatform ()
+    finalizedBy jacocoTestReport
+    useJUnitPlatform()
 
-	testLogging {
-		events 'passed', 'skipped', 'failed'
-	}
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
 }
 
 jacocoTestReport {
-	dependsOn test
-	reports {
-		xml.required = false
-		csv.required = false
-		html.outputLocation = layout.buildDirectory.dir("$rootDir/build/test-reports")
-	}
-	finalizedBy jacocoTestCoverageVerification
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir("$rootDir/build/test-reports")
+    }
+    finalizedBy jacocoTestCoverageVerification
 }

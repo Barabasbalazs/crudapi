@@ -1,19 +1,5 @@
 spring:
-    application:
-        name:
-            'crudapi'
-    jpa:
-        hibernate:
-            ddl-auto: update
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    datasource:
-        url: jdbc:postgresql://127.0.0.1:5432/movies
-        username: movies-db-user
-        password: movies
-        driverClassName: org.postgresql.Driver
-    sql:
-        init:
-            mode: always 
-  
+    application: 
+        name: crudapi
+    profiles:
+        active: test

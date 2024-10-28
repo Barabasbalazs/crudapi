@@ -8,6 +8,8 @@ import lombok.EqualsAndHashCode;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
+//need this import otherwise the id will not be inherited
+@MappedSuperclass
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
