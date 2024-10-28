@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import balazs.learning.crudapi.controller.HelloController;
-
 @SpringBootTest
 @ActiveProfiles("test")
 class CrudApiApplicationTests {
 
     @Autowired
-   private HelloController controller;
+   private CrudApiApplication crudApiApplication;
 
     @Test
 	void contextLoads() throws Exception {
-	assertThat(controller).isNotNull();
+	assertThat(crudApiApplication).isNotNull();
     }
 
 }

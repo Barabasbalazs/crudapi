@@ -1,10 +1,12 @@
 package balazs.learning.crudapi.model;
 
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -28,11 +30,15 @@ public class Movie extends BaseEntity {
     @Column(nullable = false, name = "popularity")
     Float popularity;
     @Column(nullable = false, name = "release_date")
-    Date releaseDate;
-    @ManyToMany
+    LocalDate releaseDate;
+    @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {
+        CascadeType.PERSIST,
+        CascadeType.MERGE
+    })
     @JoinTable(
         name = "genre_movies", 
         joinColumns = @JoinColumn(name = "movie_id"), 
         inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    Set<Genre> genres;
+    List<Genre> genres;
 }
