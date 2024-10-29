@@ -1,6 +1,8 @@
 package balazs.learning.crudapi;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,6 @@ class CrudApiApplicationTests {
 
     @Test
     void contextLoads() throws Exception {
-        assertThat(crudApiApplication).isNotNull();
+        assertThat(crudApiApplication, is(notNullValue()));
     }
 }

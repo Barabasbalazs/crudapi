@@ -1,6 +1,8 @@
 package balazs.learning.crudapi.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,6 +19,6 @@ class MovieTests {
         LocalDate releaseDate = LocalDate.now();
         List<Genre> genres = new ArrayList<>();
         Movie movie = new Movie(title, overview, popularity, releaseDate, genres);
-        assertThat(movie.getTitle()).isEqualTo(title);
+        assertThat(movie.getTitle(), is(equalTo(title)));
     }
 }
