@@ -15,9 +15,20 @@
         <exclude name="AbstractClassWithoutAbstractMethod"/>
         <exclude name="JUnitTestsShouldIncludeAssert"/>
         <exclude name="PreserveStackTrace"/>
+        <exclude name="JUnitAssertionsShouldIncludeMessage"/>
         <!--<exclude name="JUnitTestContainsTooManyAsserts"/>-->
         <!--<exclude name="AvoidPrintStackTrace"/>-->
     </rule>
+
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod">
+        <properties>
+            <property name="ignoredAnnotations" value="java.lang.Deprecated" />
+            <property name="ignoredAnnotations" value="jakarta.annotation.PostConstruct" />
+            <property name="ignoredAnnotations" value="jakarta.annotation.PreDestroy" />
+            <property name="ignoredAnnotations" value="org.junit.jupiter.api.Test" />
+        </properties>
+    </rule>
+
 
     <!--codestyle -->
     <rule ref="category/java/codestyle.xml">
@@ -36,6 +47,8 @@
         <exclude name="PackageCase"/>
         <exclude name="UseUnderscoresInNumericLiterals"/>
         <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="UselessParentheses" />
+
     </rule>
     <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
@@ -123,7 +136,4 @@
 
     <!-- security -->
     <rule ref="category/java/security.xml"/>
-
-
-
 </ruleset>

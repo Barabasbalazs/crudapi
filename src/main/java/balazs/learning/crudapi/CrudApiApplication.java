@@ -9,6 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 public class CrudApiApplication {
 
     public static void main(String[] args) {
-	SpringApplication.run(CrudApiApplication.class, args);
+        SpringApplication.run(CrudApiApplication.class, args);
     }
 }

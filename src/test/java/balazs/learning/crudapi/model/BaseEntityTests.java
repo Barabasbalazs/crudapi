@@ -11,5 +11,4 @@ class BaseEntityTests {
         BaseEntity baseEntity = new BaseEntity(1L);
         assertThat(baseEntity.getId()).isEqualTo(1L);
     }
-    
 }

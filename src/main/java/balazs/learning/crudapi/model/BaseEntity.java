@@ -1,14 +1,13 @@
 package balazs.learning.crudapi.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.EqualsAndHashCode;
-
 import jakarta.persistence.*;
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-//need this import otherwise the id will not be inherited
+// need this import otherwise the id will not be inherited
 @MappedSuperclass
 @AllArgsConstructor
 @Data

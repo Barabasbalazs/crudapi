@@ -1,4 +1,8 @@
 <FindBugsFilter>
+     <Match>
+        <Class name="~.*Tests"/>
+        <Bug pattern="UPM_UNCALLED_PRIVATE_METHOD" />    
+    </Match>
     <Match>
         <Class name="~.*MapperImpl"/>
     </Match>
