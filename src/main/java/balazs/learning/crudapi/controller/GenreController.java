@@ -1,7 +1,7 @@
 package balazs.learning.crudapi.controller;
 
 import balazs.learning.crudapi.model.Genre;
-import balazs.learning.crudapi.repo.GenreJPARepository;
+import balazs.learning.crudapi.service.GenreService;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +18,13 @@ public class GenreController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MovieController.class);
 
-    @Autowired GenreJPARepository genreRepository;
+    @Autowired GenreService genreService;
 
     @GetMapping
     public ResponseEntity<List<Genre>> getGenres() {
         LOG.info("GET /v1/genres");
 
-        List<Genre> genres = genreRepository.findAll();
+        List<Genre> genres = genreService.getAllGenres();
 
         return (genres.isEmpty())
                 ? new ResponseEntity<List<Genre>>(HttpStatus.NO_CONTENT)

@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import balazs.learning.crudapi.model.*;
+import balazs.learning.crudapi.repo.jpa.GenreJPARepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

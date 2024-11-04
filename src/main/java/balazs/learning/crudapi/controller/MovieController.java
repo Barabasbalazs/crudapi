@@ -1,7 +1,7 @@
 package balazs.learning.crudapi.controller;
 
 import balazs.learning.crudapi.model.Movie;
-import balazs.learning.crudapi.repo.MovieJPARepository;
+import balazs.learning.crudapi.service.MovieService;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +18,13 @@ public class MovieController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MovieController.class);
 
-    @Autowired MovieJPARepository movieRepository;
+    @Autowired MovieService movieService;
 
     @GetMapping
     public ResponseEntity<List<Movie>> getMovies() {
         LOG.info("GET /v1/movies");
 
-        List<Movie> movies = movieRepository.findAll();
+        List<Movie> movies = movieService.getAllMovies();
 
         return (movies.isEmpty())
                 ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
