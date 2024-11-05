@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=movies
+      - POSTGRES_USER=movies-db-user
+      - POSTGRES_DB=movies
+    container_name: movies_postgres
+
+volumes:
+  pgdata:

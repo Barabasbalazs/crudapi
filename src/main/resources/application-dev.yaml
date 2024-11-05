@@ -5,8 +5,11 @@ spring:
             naming:
                 implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        defer-datasource-initialization: true
     datasource:
         url: jdbc:postgresql://127.0.0.1:5432/movies
         username: movies-db-user
         password: movies
         driverClassName: org.postgresql.Driver
+    #enable this whenever you want to reseed db
+    #sql.init.mode: always
